@@ -32,15 +32,16 @@ def get_coordinates():
     lon = float(location['longitude'])
     return lon, lat
 
-def main():
+def main(trail=True):
     iss = setup()
     astronaut_details()
 
     while True:
         lon, lat = get_coordinates()
         iss.goto(lon, lat)
-        iss.dot(size=2)
+        if trail==True:
+            iss.dot(size=2)
 
 if __name__=='__main__':
-    main()
+    main(trail=False)
 
