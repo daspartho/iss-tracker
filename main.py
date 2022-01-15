@@ -30,8 +30,7 @@ def astronaut_details():
     # Extract and print the astronaut's details
     n= result["number"]
     print(f"There are currently {n} astronauts on the ISS: ")
-    people = result["people"]
-    for p in people:
+    for p in result["people"]:
         print(p['name'])
 
 def get_coordinates():
