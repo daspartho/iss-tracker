@@ -20,7 +20,7 @@ def astronaut_details():
     n= result["number"]
     print(f"There are currently {n} astronauts on the ISS: ")
     people = result["people"]
-    
+
     for p in people:
         print(p['name'])
 
@@ -39,6 +39,7 @@ def main():
     while True:
         lon, lat = get_coordinates()
         iss.goto(lon, lat)
+        iss.dot(size=2)
 
 if __name__=='__main__':
     main()
