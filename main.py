@@ -66,11 +66,9 @@ def haversine(lon1, lat1, lon2, lat2):
 def calspeed(lon1, lat1, time1, lon2, lat2, time2):
     d = haversine(lon1, lat1, lon2, lat2)
     t = time2-time1
-    try:
-        s = round((d/t)*3600, 2) # speed in kilometers per hour rounded upto 2nd decimal place
-    except ZeroDivisionError():
-        s = round((d/1)*3600, 2) # incase of 0 time difference divide by 1
-    return s
+    if t==0:
+        t=1 # incase of 0 time difference change to 1 to handle ZeroDivisionError
+    return round((d/t)*3600, 2) # returns speed in kilometers per hour rounded upto 2nd decimal place
 
 def getloc(lon, lat):
     geolocator = Nominatim(user_agent="geoapiExercises") # initialize Nominatim API
