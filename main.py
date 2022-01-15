@@ -4,7 +4,7 @@ import urllib.request
 import time
 
 screen = turtle.Screen()
-screen.setup(1200, 859)
+screen.setup(1189, 848)
 screen.setworldcoordinates(-180,-90,180,90)
 
 screen.bgpic("map.gif")
