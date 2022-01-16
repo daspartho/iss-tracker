@@ -28,8 +28,7 @@ def astronaut_details():
     result = json.loads(response.read())
 
     # Extract and print the astronaut's details
-    n= result["number"]
-    print(f"There are currently {n} astronauts on the ISS: ")
+    print(f"There are currently {result['number']} astronauts on the ISS: ")
     for p in result["people"]:
         print(p['name'])
 
@@ -68,13 +67,11 @@ def calspeed(lon1, lat1, time1, lon2, lat2, time2):
     return round((d/t)*3600, 2) # returns speed in kilometers per hour rounded upto 2nd decimal place
 
 def getloc(lon, lat):
-    geolocator = Nominatim(user_agent="geoapiExercises") # initialize Nominatim API
+    geolocator = Nominatim(user_agent="http") # initialize Nominatim API
     location = geolocator.reverse(f'{lat},{lon}')
     if location==None:
-        return 'Ocean' 
-    address = location.raw['address']
-    country = address.get('country', '')
-    return country
+        return 'Ocean'
+    return location.raw['address'].get('country', '')
 
 def main(trail=True):
     iss = setup()
